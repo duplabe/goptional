@@ -1,11 +1,13 @@
-package goptional
+package goptional_test
 
 import (
 	"testing"
+
+	"github.com/duplabe/goptional"
 )
 
 func TestNone(t *testing.T) {
-	none := None[bool]()
+	none := goptional.None[bool]()
 	if !none.IsEmpty() {
 		t.Fatalf(`None is not empty`)
 	}
@@ -50,7 +52,7 @@ func TestNone(t *testing.T) {
 }
 
 func TestSome(t *testing.T) {
-	some := Some(42)
+	some := goptional.Some(42)
 
 	if some.IsEmpty() {
 		t.Fatalf(`Some is empty`)
@@ -79,7 +81,7 @@ func TestSome(t *testing.T) {
 
 	var flag bool
 	some.IfPresent(func(val int) {
-		if 0 == val {
+		if val == 0 {
 			t.Fatalf(`IfPresent val is 0`)
 		}
 
@@ -103,11 +105,11 @@ func TestOf(t *testing.T) {
 	val := 42
 	var p *int
 
-	if (Of(&val)).IsEmpty() {
+	if (goptional.Of(&val)).IsEmpty() {
 		t.Fatalf(`empty`)
 	}
 
-	if (Of(p)).IsPresent() {
+	if (goptional.Of(p)).IsPresent() {
 		t.Fatalf(`present`)
 	}
 }

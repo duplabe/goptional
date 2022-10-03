@@ -35,7 +35,7 @@ func (o optional[T]) Get() (T, bool) {
 		return *o.val, true
 	}
 
-	return *new(T), false
+	return *new(T), false //nolint: gocritic
 }
 
 func (o optional[T]) GetOr(emptyValue T) T {

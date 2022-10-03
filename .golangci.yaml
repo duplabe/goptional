@@ -1,0 +1,33 @@
+linters:
+  enable-all: true
+  disable:
+  - deadcode # deprecated
+  - exhaustivestruct # deprecated
+  - exhaustruct
+  - gci
+  - godox
+  - goerr113
+  - gofumpt
+  - golint # deprecated
+  - gomnd
+  - ifshort # deprecated
+  - interfacer # deprecated
+  - ireturn
+  - maligned # deprecated
+  - nosnakecase # deprecated
+  - paralleltest
+  - revive
+  - scopelint # deprecated
+  - structcheck # deprecated
+  - thelper
+  - varcheck # deprecated
+  - varnamelen
+  - wsl
+
+linters-settings:
+  goimports:
+    local-prefixes: github.com/duplabe
+  govet:
+    check-shadowing: true
+    enable:
+    - fieldalignment
